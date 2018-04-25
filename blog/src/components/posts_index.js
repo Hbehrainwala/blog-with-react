@@ -43,4 +43,8 @@ function mapStateToProps(state) {
   return { posts: state.posts };
 }
 
-export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
+const mapDispatchToProps = {
+  fetchPosts,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsIndex);

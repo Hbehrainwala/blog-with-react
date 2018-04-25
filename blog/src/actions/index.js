@@ -1,14 +1,16 @@
 import axios from 'axios';
 
-export const FETCH_POSTS = 'fetch_posts';
-export const FETCH_POST = 'fetch_post';
-export const CREATE_POST = 'create_post';
-export const DELETE_POST = 'delete_post';
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const FETCH_POST = 'FETCH_POST';
+export const CREATE_POST = 'CREATE_POST';
+export const DELETE_POST = 'DELETE_POST';
+export const LOGIN_USER = 'LOGIN_USER';
+export const SIGNUP_USER = 'SIGNUP_USER';
 
-const ROOT_URL = 'http://localhost:8000/api/posts/';
+const ROOT_URL = 'http://localhost:8000/api';
 
 export function fetchPosts() {
-  const request = axios.get(`${ROOT_URL}`);
+  const request = axios.get(`${ROOT_URL}/posts/`);
 
   return {
     type: FETCH_POSTS,
@@ -17,7 +19,7 @@ export function fetchPosts() {
 }
 
 export function createPost(values, callback) {
-  const request = axios.post(`${ROOT_URL}`, values)
+  const request = axios.post(`${ROOT_URL}/posts/`, values)
     .then(() => callback());
 
   return {
@@ -27,7 +29,7 @@ export function createPost(values, callback) {
 }
 
 export function fetchPost(id) {
-  const request = axios.get(`${ROOT_URL}`);
+  const request = axios.get(`${ROOT_URL}/posts/`);
 
   return {
     type: FETCH_POST,
@@ -36,11 +38,31 @@ export function fetchPost(id) {
 }
 
 export function deletePost(id, callback) {
-  const request = axios.delete(`${ROOT_URL}/posts/${id}`)
+  const request = axios.delete(`${ROOT_URL}/posts/${id}/`)
     .then(() => callback());
 
   return {
     type: DELETE_POST,
     payload: id
+  }
+}
+
+export function loginUser(values, callback) {
+  const request = axios.post(`${ROOT_URL}/login/`, values)
+    // .then(() => callback());
+
+  return {
+    type: LOGIN_USER,
+    payload: request
+  }
+}
+
+export function signupUser(values, callback) {
+  const request = axios.post(`${ROOT_URL}/users/`, values)
+    // .then(() => callback());
+
+  return {
+    type: SIGNUP_USER,
+    payload: request
   }
 }

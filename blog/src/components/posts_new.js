@@ -36,18 +36,13 @@ class PostsNew extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
-          label="Title For Post"
+          label="Title"
           name="title"
           component={this.renderField}
         />
         <Field
-          label="Categories"
-          name="categories"
-          component={this.renderField}
-        />
-        <Field
-          label="Post Content"
-          name="content"
+          label="Description"
+          name="description"
           component={this.renderField}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
@@ -64,12 +59,8 @@ function validate(values) {
     errors.title = "Enter a title";
   }
 
-  if (!values.categories) {
-    errors.categories = "Enter some categories";
-  }
-
-  if (!values.content) {
-    errors.content = "Enter some content please";
+  if (!values.description) {
+    errors.description = "Enter a description";
   }
 
   return errors;

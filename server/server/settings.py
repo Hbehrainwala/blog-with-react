@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'corsheaders',
     # for api
     'rest_framework',
+    'rest_framework.authtoken',
     'ckeditor',
 
 ]
@@ -158,5 +159,9 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
 }
+
