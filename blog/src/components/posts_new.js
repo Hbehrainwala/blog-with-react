@@ -25,7 +25,15 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
-    this.props.createPost(values, () => {
+    var headers = {}
+    if(sessionStorage.token){
+      headers = {
+              'Content-Type': 'application/json',
+              'Authorization': 'Token '+sessionStorage.token+''
+          }
+    }
+    debugger;
+    this.props.createPost(values, headers, () => {
       browserHistory.push('/');
     });
   }

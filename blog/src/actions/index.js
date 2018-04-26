@@ -18,8 +18,9 @@ export function fetchPosts() {
   };
 }
 
-export function createPost(values, callback) {
-  const request = axios.post(`${ROOT_URL}/posts/`, values)
+export function createPost(values, headers, callback) {
+  debugger;
+  const request = axios.post(`${ROOT_URL}/posts/`, values, { headers })
     .then(() => callback());
 
   return {
@@ -39,7 +40,6 @@ export function fetchPost(id) {
 
 export function deletePost(id, callback) {
   const request = axios.delete(`${ROOT_URL}/posts/${id}/`)
-    .then(() => callback());
 
   return {
     type: DELETE_POST,

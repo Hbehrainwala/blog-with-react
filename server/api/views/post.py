@@ -23,11 +23,16 @@ class PostViewSet(mixins.CreateModelMixin,
         return Post.objects.all()
 
     def create(self, request):
-        data = request.data
-        searializer = PostSerializer(data=data)
-        if searializer.is_valid():
-            searializer.save()
-        return Response(searializer.data)
+        if request.user.is_authenticated():
+            data = request.data
+            serializer = PostSerializer(data=data)
+            if serializer.is_valid():
+                serializer.save()
+                serializer.instance.user = request.user
+                serializer.instance.save()
+            return Response(serializer.data)
+        return Response("You need to be login first")
+
 
     def delete(self, request, pk):
         post = get_object_or_404(Post, pk=pk)

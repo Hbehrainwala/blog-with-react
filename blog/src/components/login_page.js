@@ -24,6 +24,7 @@ class LoginPage extends Component {
     await this.props.loginUser(values);
     if(this.props.token){
       browserHistory.push('/');
+      sessionStorage.setItem('token', this.props.token.access_token);
     }else{
       alert("Email or password is incorrect");
     }
