@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
+import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { createPost } from '../actions';
 
@@ -26,7 +26,7 @@ class PostsNew extends Component {
 
   onSubmit(values) {
     this.props.createPost(values, () => {
-      this.props.history.push('/');
+      browserHistory.push('/');
     });
   }
 
@@ -66,9 +66,15 @@ function validate(values) {
   return errors;
 }
 
+
+const mapDispatchToProps = {
+  createPost,
+};
+
+
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
 })(
-  connect(null, { createPost })(PostsNew)
+  connect(null, mapDispatchToProps)(PostsNew)
 );

@@ -23,9 +23,8 @@ class LoginPage extends Component {
     let values = {'username' : this.state.email, 'password' : this.state.password }
     await this.props.loginUser(values);
     if(this.props.token){
-      this.props.history.push('/');
+      browserHistory.push('/');
     }else{
-      debugger;
       alert("Email or password is incorrect");
     }
   }
