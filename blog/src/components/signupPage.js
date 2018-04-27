@@ -41,7 +41,6 @@ class SignUpPage extends Component {
     if(this.props.token){
       this.props.history.push('/');
     }else{
-      debugger;
       alert("Email or password is incorrect");
     }
   }

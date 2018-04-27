@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
+
 import { createPost } from '../actions';
 
 class PostsNew extends Component {
@@ -32,7 +33,6 @@ class PostsNew extends Component {
               'Authorization': 'Token '+sessionStorage.token+''
           }
     }
-    debugger;
     this.props.createPost(values, headers, () => {
       browserHistory.push('/');
     });

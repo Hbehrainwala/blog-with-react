@@ -13,7 +13,6 @@ export default function (state = initialStateUser, action) {
       return { ...state, token : action.payload.headers, loginUser : action.payload.data};
 
     case SIGNUP_USER:
-    debugger;
       return { ...state, token : action.payload.headers, loginUser : action.payload.data};
 
     default:

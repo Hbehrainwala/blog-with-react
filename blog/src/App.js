@@ -5,14 +5,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux';
-// import { routerMiddleware, push } from 'react-router-redux'
 
 import reducers from './reducers';
-import PostsIndex from './components/posts_index';
-import PostsNew from './components/posts_new';
-import PostsShow from './components/posts_show';
-import LoginPage from './components/login_page';
-import SignUpPage from './components/signupPage';
 import routes from './route'
 
 

@@ -6,6 +6,7 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const LOGIN_USER = 'LOGIN_USER';
 export const SIGNUP_USER = 'SIGNUP_USER';
+export const UPDATE_POST = 'UPDATE_POST';
 
 const ROOT_URL = 'http://localhost:8000/api';
 
@@ -19,7 +20,6 @@ export function fetchPosts() {
 }
 
 export function createPost(values, headers, callback) {
-  debugger;
   const request = axios.post(`${ROOT_URL}/posts/`, values, { headers })
     .then(() => callback());
 
@@ -30,7 +30,7 @@ export function createPost(values, headers, callback) {
 }
 
 export function fetchPost(id) {
-  const request = axios.get(`${ROOT_URL}/posts/`);
+  const request = axios.get(`${ROOT_URL}/posts/${id}/`);
 
   return {
     type: FETCH_POST,
@@ -64,5 +64,14 @@ export function signupUser(values, callback) {
   return {
     type: SIGNUP_USER,
     payload: request
+  }
+}
+
+export function updatePost(id, values, headers, callback) {
+  const request = axios.put(`${ROOT_URL}/posts/${id}/`, values, { headers })
+
+  return {
+    type : UPDATE_POST,
+    payload : request
   }
 }

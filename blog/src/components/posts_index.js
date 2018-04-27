@@ -8,8 +8,8 @@ class PostsIndex extends Component {
   constructor(props){
     super(props);
   }
-  componentDidMount() {
-    this.props.fetchPosts();
+  async componentDidMount() {
+    await this.props.fetchPosts();
   }
 
   renderPosts() {
@@ -18,6 +18,9 @@ class PostsIndex extends Component {
         <li className="list-group-item" key={ post.id }>
           <Link to={`/post/${post.id}`}>
             { post.title }
+          </Link>
+          <Link to={`/post/update/${post.id}`}>
+            <i className="far fa-edit"></i>
           </Link>
         </li>
       );
@@ -44,7 +47,7 @@ class PostsIndex extends Component {
 
 
 const mapStateToProps = (state) => ({
-  posts: state.posts
+  posts: state.posts.posts,
 });
 
 const mapDispatchToProps = {

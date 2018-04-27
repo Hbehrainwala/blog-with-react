@@ -9,25 +9,23 @@ class PostsShow extends Component {
     this.state = {
       post : this.props.post,
     };
-    // this.deletePost = this.deletePost.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
-  componentDidMount() {
-    const { id } = this.props.params;;
-    this.props.fetchPost(parseInt(id));
+  async componentDidMount() {
+    await this.props.fetchPost(this.props.routeParams.id);
   }
 
 
-  // deletePost = () => {
-  //   const {id} = this.state.post
-  //   // if(id) {
-  //   //   this.props.deletePost(id, () => {
-  //   //     browserHistory.push('/');
-  //   // });
-  //   // }
-  // }
+  async deletePost()  {
+    const {id} = this.props.post
+    if(id) {
+      await this.props.deletePost(id)
+        browserHistory.push('/');
+      }
+  }
 
   render() {
-    const { post } = this.state;
+    const { post } = this.props;
     if(!post) {
       return <div>Loading...</div>;
     }
@@ -37,7 +35,7 @@ class PostsShow extends Component {
         <Link to="/">Home</Link>
         <button
           className="btn btn-danger"
-          // onClick={this.deletePost}
+          onClick={this.deletePost}
         >
           Delete Post
         </button>
@@ -49,10 +47,9 @@ class PostsShow extends Component {
   }
 }
 
-function mapStateToProps({ posts }, ownProps) {
-  debugger;
+function mapStateToProps(state) {
   return {
-    post: posts[parseInt(ownProps.params.id)]
+    post: state.posts.post
   };
 }
 

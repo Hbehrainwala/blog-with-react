@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404
 
 class PostViewSet(mixins.CreateModelMixin,
                    mixins.RetrieveModelMixin,
-                   mixins.UpdateModelMixin,
                    mixins.ListModelMixin,
                    viewsets.GenericViewSet,
                    viewsets.ViewSet
@@ -33,6 +32,19 @@ class PostViewSet(mixins.CreateModelMixin,
             return Response(serializer.data)
         return Response("You need to be login first")
 
+    def put(self, request, pk):
+        if request.user.is_authenticated():
+            data = request.data
+            serializer = PostSerializer(data=data)
+            post = Post.objects.get(pk=pk)
+            if serializer.is_valid():
+                post.title = data['title']
+                post.description = data['description']
+                post.user = request.user
+                post.save()
+            return Response(serializer.data)
+
+        return Response("You need to be login first")
 
     def delete(self, request, pk):
         post = get_object_or_404(Post, pk=pk)
