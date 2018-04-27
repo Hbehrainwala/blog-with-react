@@ -25,7 +25,7 @@ class PostsNew extends Component {
     );
   }
 
-  onSubmit(values) {
+  async onSubmit(values) {
     var headers = {}
     if(sessionStorage.token){
       headers = {
@@ -33,9 +33,8 @@ class PostsNew extends Component {
               'Authorization': 'Token '+sessionStorage.token+''
           }
     }
-    this.props.createPost(values, headers, () => {
+    await this.props.createPost(values, headers)
       browserHistory.push('/');
-    });
   }
 
   render() {
