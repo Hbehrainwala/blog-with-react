@@ -52,6 +52,7 @@ class PostsNew extends Component {
           name="description"
           component={this.renderField}
         />
+        <Field name="publish" component="input" type="checkbox"/>
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>

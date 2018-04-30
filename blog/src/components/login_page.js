@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { loginUser } from '../actions';
+import { reduxForm , Field } from 'redux-form';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -18,8 +19,27 @@ class LoginPage extends Component {
   onChangeEmail = ev => this.setState({ email: ev.target.value, errors: {} })
   onChangePassword = ev => this.setState({ password: ev.target.value, errors: {} })
 
+  renderField(field) {
+    const { meta: { touched, error } } = field;
+    const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+
+    return (
+      <div className={className}>
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          type="text"
+          {...field.input}
+        />
+        <div className="text-help">
+          {touched ? error : ''}
+        </div>
+      </div>
+    );
+  }
+
   async handleLogin(ev) {
-    ev.preventDefault();
+    // ev.preventDefault();
     let values = {'username' : this.state.email, 'password' : this.state.password }
     await this.props.loginUser(values);
     if(this.props.token){
@@ -33,17 +53,49 @@ class LoginPage extends Component {
 
 
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <div>
-          <form onSubmit={this.handleLogin}>
-              <input type="text" placeholder="Email" name="email" onChange={this.onChangeEmail} />
-              <input type="password" placeholder="password" name="password" onChange={this.onChangePassword} />
-              {this.state.errors.general ? <p className="error">{this.state.errors.general.message}</p> : null}
-              <button type="submit" className="btn btn-primary"><span>Log in</span></button>
-          </form>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div className="container col-md-6 loginForm">
+            <form onSubmit={handleSubmit(this.handleLogin)}>
+              <div className="container">
+                <Field
+                  label = "Email"
+                  name = "email"
+                  component = {this.renderField}
+                  onChange = {this.onChangeEmail}
+                />
+              </div>
+              <div className="container">
+                <Field
+                  label = "Password"
+                  name = "password"
+                  component = {this.renderField}
+                  onChange = {this.onChangePassword}
+                />
+              </div>
+                <button type="submit" className="btn btn-primary">Login</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
       </div>
     );
   }
+}
+
+function validate(values) {
+  const errors = {};
+
+  if (!values.email) {
+    errors.email = "Enter a email";
+  }
+
+  if (!values.password) {
+    errors.password = "Enter a password";
+  }
+
+  return errors;
 }
 
 const mapStateToProps = state =>({
@@ -55,5 +107,9 @@ const mapDispatchToProps = {
   loginUser,
 };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default reduxForm({
+  validate,
+  form: 'LoginForm'
+})(
+  connect(mapStateToProps, mapDispatchToProps)(LoginPage)
+);

@@ -8,8 +8,10 @@ import './style.css'
 
 const Home = (props) => {
   return (
-    <div className="Home">
+    <div>
+      <Header />
       {props.children}
+      <Footer />
     </div>
   );
 };
