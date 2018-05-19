@@ -4,3 +4,13 @@
 .header_blog .navbar-nav a.nav-link{
   color: white;
 }
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #563d7c;
+   color: white;
+   text-align: center;
+   height: 40px
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, IndexRoute, IndexRedirect } from 'react-router';
+import { Route, IndexRedirect } from 'react-router';
 import Home from './components/home/Home';
 import LoginPage from './components/login_page';
 import SignUpPage from './components/signupPage';

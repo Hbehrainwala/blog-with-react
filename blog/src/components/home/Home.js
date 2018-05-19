@@ -1,19 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import PostsIndex from '../../components/posts_index';
 import Header from './header';
 import Footer from './footer';
-import './style.css'
+import './style.css';
+import { logoutUser } from '../../actions'
 
 
 const Home = (props) => {
   return (
     <div>
-      <Header />
+      <Header
+      logoutUser={logoutUser}/>
       {props.children}
       <Footer />
     </div>
   );
 };
 
-export default connect(null, null)(Home);
+const mapDispatchToProps = {
+  logoutUser,
+};
+
+export default connect(null, mapDispatchToProps)(Home);
