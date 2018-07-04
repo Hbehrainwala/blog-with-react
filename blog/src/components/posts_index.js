@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions';
+import { fetchPublishPost } from '../actions';
 import { Link } from 'react-router';
 
 class PostsIndex extends Component {
@@ -9,7 +9,7 @@ class PostsIndex extends Component {
     super(props);
   }
   async componentDidMount() {
-    await this.props.fetchPosts();
+    await this.props.fetchPublishPost();
   }
 
   renderPosts() {
@@ -46,7 +46,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  fetchPosts,
+  fetchPublishPost,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsIndex);

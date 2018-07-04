@@ -45,7 +45,7 @@ class Header extends Component {
               <a className="nav-link" href="#">Post<span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">My Post</a>
+              <a className="nav-link" href="/mypost">My Post</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/post/new">Create Post  </a>

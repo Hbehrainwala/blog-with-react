@@ -6,7 +6,8 @@ import SignUpPage from './components/signupPage';
 import PostsIndex from './components/posts_index';
 import PostsShow from './components/posts_show';
 import PostsNew from './components/posts_new';
-import PostUpdate from './components/postUpdate'
+import PostUpdate from './components/postUpdate';
+import showMyPost from './components/showMyPost';
 
 
 
@@ -17,6 +18,7 @@ export default(
     <Route path="post/new" component={PostsNew} />
     <Route path="post/:id" component={PostsShow} />
     <Route path="post/update/:id" component={PostUpdate} />
+    <Route path="mypost" component={showMyPost} />
 
     <Route path="login" component={LoginPage} />
     <Route path="signup" component={SignUpPage} />

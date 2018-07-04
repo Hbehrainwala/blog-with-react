@@ -6,6 +6,13 @@ import { connect } from 'react-redux';
 import { createPost } from '../actions';
 
 class PostsNew extends Component {
+
+  componentDidMount(){
+    if(!sessionStorage.token){
+      browserHistory.push("/login")
+    }
+  }
+
   renderField(field) {
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;

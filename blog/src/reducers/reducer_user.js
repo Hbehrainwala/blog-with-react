@@ -1,4 +1,4 @@
-import { LOGIN_USER, SIGNUP_USER } from '../actions';
+import { LOGIN_USER, SIGNUP_USER } from '../constant';
 
 const initialStateUser = {
     token : '',

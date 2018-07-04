@@ -1,12 +1,14 @@
-from django.conf import settings
+from django.core import serializers
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse, JsonResponse
+
 from rest_framework import mixins, viewsets, status
 from rest_framework.permissions import AllowAny 
 from rest_framework.response import Response
+from rest_framework.decorators import  list_route, detail_route
+
 from ..models.post import Post
 from ..serializers import PostSerializer 
-from rest_framework.decorators import  list_route, detail_route
-from django.core import serializers
-from django.shortcuts import get_object_or_404
 
 class PostViewSet(mixins.CreateModelMixin,
                    mixins.RetrieveModelMixin,
@@ -50,3 +52,18 @@ class PostViewSet(mixins.CreateModelMixin,
         post = get_object_or_404(Post, pk=pk)
         post.delete()
         return Response("Post deleted successfully")
+
+    @list_route(methods=['get'])
+    def publish_post(self, request):
+        pub_posts = self.get_queryset().filter(publish=True)
+        serializer = PostSerializer(pub_posts, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    @list_route(methods=['get'])
+    def mypost(self, request):
+        if request.user.is_authenticated:
+            myposts = self.get_queryset().filter(user=request.user.id)
+            serializer = PostSerializer(myposts, many=True)
+            return JsonResponse(serializer.data, safe=False)
+        else:
+            return Response("You need to be login first")
