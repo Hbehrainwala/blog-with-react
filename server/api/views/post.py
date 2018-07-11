@@ -67,3 +67,22 @@ class PostViewSet(mixins.CreateModelMixin,
             return JsonResponse(serializer.data, safe=False)
         else:
             return Response("You need to be login first")
+
+    @list_route(methods=['get'])
+    def mypubishpost(self, request):
+        if request.user.is_authenticated:
+            mypublishpost = self.get_queryset().filter(user=request.user.id, publish=True)
+            serializer = PostSerializer(mypublishpost, many=True)
+            return JsonResponse(serializer.data, safe=False)
+        else:
+            return Response("You need to be login first")
+
+
+    @list_route(methods=['get'])
+    def myunpubishpost(self, request):
+        if request.user.is_authenticated:
+            myunpublishpost = self.get_queryset().filter(user=request.user.id, publish=False)
+            serializer = PostSerializer(myunpublishpost, many=True)
+            return JsonResponse(serializer.data, safe=False)
+        else:
+            return Response("You need to be login first")            

@@ -21,7 +21,8 @@ class Header extends Component {
     }
     await this.props.logoutUser(headers);
     sessionStorage.removeItem("token");
-      browserHistory.push('/');
+    this.setState({"token" : ""})
+    browserHistory.push('/');
   }
 
   render() {
@@ -44,8 +45,17 @@ class Header extends Component {
             <li className="nav-item">
               <a className="nav-link" href="#">Post<span className="sr-only">(current)</span></a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/mypost">My Post</a>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                MyPost
+              </a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href="/mypost">All Post</a>
+                <a className="dropdown-item" href="#">Publish Post</a>
+                <a className="dropdown-item" href="#">UnPublish Post</a>
+                <div className="dropdown-divider"></div>
+                <a className="dropdown-item" href="#">Something else here</a>
+              </div>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/post/new">Create Post  </a>

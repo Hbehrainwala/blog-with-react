@@ -7,9 +7,14 @@ import { Link } from 'react-router';
 class PostsIndex extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      posts : {},
+    }
   }
   async componentDidMount() {
     await this.props.fetchPublishPost();
+    const { posts } = this.props;
+    this.setState({ "posts" : posts });
   }
 
   renderPosts() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signupUser } from '../actions';
+import { browserHistory } from 'react-router';
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class SignUpPage extends Component {
     }
     await this.props.signupUser(values);
     if(this.props.token){
-      this.props.history.push('/');
+      browserHistory.push('/');
     }else{
       alert("Email or password is incorrect");
     }

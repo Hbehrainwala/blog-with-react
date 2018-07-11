@@ -11,6 +11,7 @@ class LoginPage extends Component {
       email: '',
       password: '',
       errors: {},
+      token : ''
     };
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
@@ -43,6 +44,8 @@ class LoginPage extends Component {
     let values = {'username' : this.state.email, 'password' : this.state.password }
     await this.props.loginUser(values);
     if(this.props.token){
+      const { token } = this.props;
+      this.setState({"token" : token });
       browserHistory.push('/');
       sessionStorage.setItem('token', this.props.token.access_token);
     }else{

@@ -19,8 +19,8 @@ class PostsShow extends Component {
   async deletePost()  {
     const {id} = this.props.post
     if(id) {
-      await this.props.deletePost(id)
-        browserHistory.push('/');
+      await this.props.deletePost(id);
+      browserHistory.push('/');
       }
   }
 
