@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { FETCH_POSTS ,CREATE_POST, FETCH_POST, DELETE_POST, FETCH_MY_POST, FETCH_PUBLISH_POST,
    LOGIN_USER, SIGNUP_USER, UPDATE_POST, LOGOUT_USER,
-   FETCH_MY_PUBLISH_POST, FETCH_MY_UNPUBLISH_POST } from "../constant"
+   FETCH_MY_PUBLISH_POST, FETCH_MY_UNPUBLISH_POST,
+ FETCH_MY_ARCHIVE_POST } from "../constant"
 
 const ROOT_URL = 'http://localhost:8000/api';
 
@@ -98,11 +99,29 @@ export function fetchPublishPost(){
   }
 }
 
-export function fetchMyPublishPost(){
-  const request = axios.get(`${ROOT_URL}/posts/mypubishpost/`)
+export function fetchMyPublishPost(headers, callback){
+  const request = axios.get(`${ROOT_URL}/posts/mypubishpost/`, { headers })
 
   return{
     type : FETCH_MY_PUBLISH_POST,
+    payload : request
+  }
+}
+
+export function fetchMyUnpublishPost(headers, callback){
+  const request = axios.get(`${ROOT_URL}/posts/myunpubishpost/`, { headers })
+
+  return{
+    type : FETCH_MY_UNPUBLISH_POST,
+    payload : request
+  }
+}
+
+export function fetchMyArchivePost(headers, callback){
+  const request = axios.get(`${ROOT_URL}/posts/myarchivepost/`, { headers })
+
+  return{
+    type : FETCH_MY_ARCHIVE_POST,
     payload : request
   }
 }

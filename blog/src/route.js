@@ -8,6 +8,9 @@ import PostsShow from './components/posts_show';
 import PostsNew from './components/posts_new';
 import PostUpdate from './components/postUpdate';
 import showMyPost from './components/showMyPost';
+import showMyPublishPost from './components/showMyPublishPost';
+import showMyUnpublishPost from './components/showMyUnpublishPost';
+import showMyArchivePost from './components/showMyArchivePost';
 
 
 
@@ -19,6 +22,9 @@ export default(
     <Route path="post/:id" component={PostsShow} />
     <Route path="post/update/:id" component={PostUpdate} />
     <Route path="mypost" component={showMyPost} />
+    <Route path="mypublishpost" component={showMyPublishPost} />
+    <Route path="myunpublishpost" component={showMyUnpublishPost} />
+    <Route path="myarchivepost" component={showMyArchivePost} />
 
     <Route path="login" component={LoginPage} />
     <Route path="signup" component={SignUpPage} />

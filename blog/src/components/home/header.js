@@ -51,10 +51,10 @@ class Header extends Component {
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a className="dropdown-item" href="/mypost">All Post</a>
-                <a className="dropdown-item" href="#">Publish Post</a>
-                <a className="dropdown-item" href="#">UnPublish Post</a>
+                <a className="dropdown-item" href="/mypublishpost">Publish Post</a>
+                <a className="dropdown-item" href="/myunpublishpost">UnPublish Post</a>
                 <div className="dropdown-divider"></div>
-                <a className="dropdown-item" href="#">Something else here</a>
+                <a className="dropdown-item" href="/myarchivepost">Archive Post</a>
               </div>
             </li>
             <li className="nav-item">

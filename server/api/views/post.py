@@ -71,7 +71,7 @@ class PostViewSet(mixins.CreateModelMixin,
     @list_route(methods=['get'])
     def mypubishpost(self, request):
         if request.user.is_authenticated:
-            mypublishpost = self.get_queryset().filter(user=request.user.id, publish=True)
+            mypublishpost = self.get_queryset().filter(user=request.user.id, publish=True, archive=False)
             serializer = PostSerializer(mypublishpost, many=True)
             return JsonResponse(serializer.data, safe=False)
         else:
@@ -81,8 +81,17 @@ class PostViewSet(mixins.CreateModelMixin,
     @list_route(methods=['get'])
     def myunpubishpost(self, request):
         if request.user.is_authenticated:
-            myunpublishpost = self.get_queryset().filter(user=request.user.id, publish=False)
+            myunpublishpost = self.get_queryset().filter(user=request.user.id, publish=False, archive=False)
             serializer = PostSerializer(myunpublishpost, many=True)
             return JsonResponse(serializer.data, safe=False)
         else:
-            return Response("You need to be login first")            
+            return Response("You need to be login first")
+
+    @list_route(methods=['get'])
+    def myarchivepost(self, request):
+        if request.user.is_authenticated:
+            my_archive_post = self.get_queryset().filter(user=request.user.id, archive=True)
+            serializer = PostSerializer(my_archive_post, many=True)
+            return JsonResponse(serializer.data, safe=False)
+        else:
+            return Response("You need to be login first")
