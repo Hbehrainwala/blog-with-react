@@ -37,7 +37,7 @@ class showMyArchivePost extends Component {
     console.log(this.props.myarchivepost);
     return(
       <div>
-        <h3>Posts</h3>
+        <h3>Archive Post</h3>
         <ul className="list-group">
           { this.renderMyPosts() }
         </ul>

@@ -37,7 +37,7 @@ class showMyPublishPost extends Component {
     console.log(this.props.mypublishpost);
     return(
       <div>
-        <h3>Posts</h3>
+        <h3>My Publish Post</h3>
         <ul className="list-group">
           { this.renderMyPosts() }
         </ul>

@@ -37,7 +37,7 @@ class showMyPost extends Component {
     console.log(this.props.mypost);
     return(
       <div>
-        <h3>Posts</h3>
+        <h3>My Post</h3>
         <ul className="list-group">
           { this.renderMyPosts() }
         </ul>
