@@ -32,7 +32,6 @@ class PostsShow extends Component {
 
     return(
       <div>
-        <Link to="/">Home</Link>
         <button
           className="btn btn-danger"
           onClick={this.deletePost}

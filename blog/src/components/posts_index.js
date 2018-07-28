@@ -24,10 +24,7 @@ class PostsIndex extends Component {
           <Link to={`/post/${post.id}`}>
             { post.title }
           </Link>
-            Posted by - { post.author }
-          <Link to={`/post/update/${post.id}`}>
-            <i className="far fa-edit"></i>
-          </Link>
+          Posted by - { post.author }
         </li>
       );
     });
