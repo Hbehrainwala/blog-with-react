@@ -39,7 +39,7 @@ class PostsShow extends Component {
           Delete Post
         </button>
         <h3>{post.title}</h3>
-        <h6>Likes: {post.likes}</h6>
+        <h6>{post.likes}<i class="far fa-thumbs-up"></i></h6>
         <p>{post.description}</p>
       </div>
     );

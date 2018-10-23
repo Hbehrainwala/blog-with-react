@@ -22,8 +22,9 @@ class showMyArchivePost extends Component {
     return _.map(this.props.myarchivepost, post => {
       return(
         <li className="list-group-item" key={ post.id }>
+          { post.title }
           <Link to={`/post/${post.id}`}>
-            { post.title }
+            <i class="far fa-eye"></i>
           </Link>
           <Link to={`/post/update/${post.id}`}>
             <i className="far fa-edit"></i>

@@ -52,11 +52,11 @@ class SignUpPage extends Component {
     return (
       <div>
           <form onSubmit={this.handleSignup}>
-              <input type="text" placeholder="Email" name="email" onChange={this.onChangeEmail} />
-              <input type="text" placeholder="First Name" name="first_name" onChange={this.onChangeFirstName} />
-              <input type="text" placeholder="Last Name" name="last_name" onChange={this.onChangeLastName} />
-              <input type="text" placeholder="Username" name="username" onChange={this.onChangeUsername} />
-              <input type="password" placeholder="password" name="password" onChange={this.onChangePassword} />
+              <input type="text" className="form-control" placeholder="Email" name="email" onChange={this.onChangeEmail} />
+              <input type="text" className="form-control" placeholder="First Name" name="first_name" onChange={this.onChangeFirstName} />
+              <input type="text" className="form-control" placeholder="Last Name" name="last_name" onChange={this.onChangeLastName} />
+              <input type="text" className="form-control" placeholder="Username" name="username" onChange={this.onChangeUsername} />
+              <input type="password" className="form-control" placeholder="password" name="password" onChange={this.onChangePassword} />
               {this.state.errors.general ? <p className="error">{this.state.errors.general.message}</p> : null}
               <button type="submit" className="btn btn-primary"><span>SignUp</span></button>
           </form>
