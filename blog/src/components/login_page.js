@@ -46,8 +46,8 @@ class LoginPage extends Component {
     if(this.props.token){
       const { token } = this.props;
       this.setState({"token" : token });
-      browserHistory.push('/');
       sessionStorage.setItem('token', this.props.token.access_token);
+      browserHistory.push('/');
     }else{
       alert("Email or password is incorrect");
     }

@@ -1,42 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import {browserHistory } from 'react-router';
 
 class Header extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      token : sessionStorage.token,
-    }
-    this.logout = this.logout.bind(this);
-    this.login = this.login.bind(this);
-    this.signup = this.signup.bind(this);
-  }
-  async logout(){
-    var headers = {}
-    if(sessionStorage.token){
-      headers = {
-              'Content-Type': 'application/json',
-              'Authorization': 'Token '+sessionStorage.token+''
-          }
-    }
-    await this.props.logoutUser(headers);
-    sessionStorage.removeItem("token");
-    this.setState({"token" : ""})
-    browserHistory.push('/');
-  }
-
-  login(){
-    browserHistory.push('/login'); 
-  }
-
-  signup(){
-    browserHistory.push('/signup');
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps)
+    debugger
   }
 
   render() {
-    if(this.state.token){
+    if(this.props.token){
       return (
         <div>
         <nav className="navbar navbar-expand-lg navbar navbar-light header_blog">
@@ -65,7 +38,7 @@ class Header extends Component {
                 <a className="nav-link" href="/post/new">Create Post  </a>
               </li>
             </ul>
-            <button className="btn btn-default" onClick={this.logout} >Logout</button>
+            <button className="btn btn-default" onClick={this.props.logout} >Logout</button>
           </div>
           </nav>
         </div>
@@ -87,8 +60,8 @@ class Header extends Component {
               <a className="nav-link" href="/post/new">Create Post  </a>
             </li>
           </ul>
-          <button className="btn btn-default" onClick={this.signup} >Signup</button>
-          <button className="btn btn-default" onClick={this.login} >Login</button>
+          <button className="btn btn-default" onClick={this.props.signup} >Signup</button>
+          <button className="btn btn-default" onClick={this.props.login} >Login</button>
         </div>
         </nav>
       </div>
