@@ -5,7 +5,6 @@ import {browserHistory } from 'react-router';
 class Header extends Component {
   componentWillReceiveProps(nextProps) {
     console.log(nextProps)
-    debugger
   }
 
   render() {

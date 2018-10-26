@@ -48,7 +48,7 @@ class PostsNew extends Component {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form className="create-post-form" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title"
           name="title"
@@ -59,7 +59,9 @@ class PostsNew extends Component {
           name="description"
           component={this.renderField}
         />
-        <Field name="publish" component="input" type="checkbox"/>
+        <p>
+          <Field name="publish" component="input" type="checkbox"/> Publish
+        </p>
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>

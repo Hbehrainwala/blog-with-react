@@ -14,3 +14,17 @@
    text-align: center;
    height: 40px
 }
+
+
+.create-post-form{
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+    border: #ccc solid 1px;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.2);
+}
+.create-post-form .form-group label{
+    margin-bottom: 5px;
+}
