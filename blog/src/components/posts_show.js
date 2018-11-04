@@ -9,19 +9,22 @@ class PostsShow extends Component {
     this.state = {
       post : this.props.post,
     };
-    this.deletePost = this.deletePost.bind(this);
   }
   async componentDidMount() {
     await this.props.fetchPost(this.props.routeParams.id);
   }
 
 
-  async deletePost()  {
+  deletePost = async () =>  {
     const {id} = this.props.post
     if(id) {
       await this.props.deletePost(id);
       browserHistory.push('/');
       }
+  }
+
+  likePost = () => {
+    debugger;
   }
 
   render() {
@@ -39,7 +42,7 @@ class PostsShow extends Component {
           Delete Post
         </button>
         <h3>{post.title}</h3>
-        <h6>{post.likes}<i class="far fa-thumbs-up"></i></h6>
+        <h6>{post.likes}<button onClick={this.likePost}><i class="far fa-thumbs-up"></i></button></h6>
         <p>{post.description}</p>
       </div>
     );
