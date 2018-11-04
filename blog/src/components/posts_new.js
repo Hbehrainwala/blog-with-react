@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-import { createPost } from '../actions';
+import { createPost } from '../actions/posts.action';
 
 class PostsNew extends Component {
 

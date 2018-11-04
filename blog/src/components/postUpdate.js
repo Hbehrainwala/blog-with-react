@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Link, browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 
-import { updatePost, fetchPost } from '../actions'
+import { updatePost, fetchPost } from '../actions/posts.action'
 
 class postUpdate extends Component {
   constructor(props){

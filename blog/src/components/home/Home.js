@@ -4,7 +4,7 @@ import {browserHistory } from 'react-router';
 import Header from './header';
 import Footer from './footer';
 import './style.css';
-import { logoutUser } from '../../actions'
+import { logoutUser } from '../../actions/users.action';
 
 class Home extends Component {
   constructor(props){

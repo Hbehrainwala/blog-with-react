@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import { loginUser } from '../actions';
+import { loginUser } from '../actions/users.action';
 import { reduxForm , Field } from 'redux-form';
 
 class LoginPage extends Component {

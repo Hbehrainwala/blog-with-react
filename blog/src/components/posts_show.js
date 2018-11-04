@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
-import { fetchPost, deletePost } from '../actions';
+import { fetchPost, deletePost } from '../actions/posts.action';
 
 class PostsShow extends Component {
   constructor(props){

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMyUnpublishPost } from '../actions';
+import { fetchMyUnpublishPost } from '../actions/posts.action';
 import { Link, browserHistory } from 'react-router';
 
 class showMyUnpublishPost extends Component {

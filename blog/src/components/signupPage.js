@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signupUser } from '../actions';
+import { signupUser } from '../actions/users.action';
 import { browserHistory } from 'react-router';
 
 class SignUpPage extends Component {

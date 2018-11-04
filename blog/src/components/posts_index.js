@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPublishPost } from '../actions';
+import { fetchPublishPost } from '../actions/posts.action';
 import { Link } from 'react-router';
 
 class PostsIndex extends Component {
