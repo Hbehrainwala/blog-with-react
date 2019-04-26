@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { signupUser } from '../actions/users.action';
 import { browserHistory } from 'react-router';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class SignUpPage extends Component {
   constructor(props) {
@@ -46,21 +47,32 @@ class SignUpPage extends Component {
     }
   }
 
-
-
   render() {
     return (
-      <div>
-          <form onSubmit={this.handleSignup}>
-              <input type="text" className="form-control" placeholder="Email" name="email" onChange={this.onChangeEmail} />
-              <input type="text" className="form-control" placeholder="First Name" name="first_name" onChange={this.onChangeFirstName} />
-              <input type="text" className="form-control" placeholder="Last Name" name="last_name" onChange={this.onChangeLastName} />
-              <input type="text" className="form-control" placeholder="Username" name="username" onChange={this.onChangeUsername} />
-              <input type="password" className="form-control" placeholder="password" name="password" onChange={this.onChangePassword} />
-              {this.state.errors.general ? <p className="error">{this.state.errors.general.message}</p> : null}
-              <button type="submit" className="btn btn-primary"><span>SignUp</span></button>
-          </form>
-      </div>
+      <Form onSubmit={this.handleSignup}>
+        <FormGroup>
+          <Label for="email">Email</Label>
+          <Input type="email" name="email" id="email" onChange={this.onChangeEmail} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="first_name">First Name</Label>
+          <Input type="text" name="email" id="first_name" onChange={this.onChangeFirstName}/>
+        </FormGroup>
+        <FormGroup>
+          <Label for="last_name">Last Name</Label>
+          <Input type="text" name="last_name" id="last_name" onChange={this.onChangeLastName}/>
+        </FormGroup>
+        <FormGroup>
+          <Label for="username">Username</Label>
+          <Input type="text" name="username" id="username" onChange={this.onChangeUsername} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="password">Password</Label>
+          <Input type="password" name="password" id="password" onChange={this.onChangePassword}/>
+        </FormGroup>
+        {this.state.errors.general ? <p className="error">{this.state.errors.general.message}</p> : null}
+        <Button type="submit">SignUp</Button>
+      </Form>
     );
   }
 }

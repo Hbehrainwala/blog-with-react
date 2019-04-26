@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import { loginUser } from '../actions/users.action';
 import { reduxForm , Field } from 'redux-form';
+import { Button, Form } from 'reactstrap';
 
 class LoginPage extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class LoginPage extends Component {
       <div class="row">
         <div class="col-md-3"></div>
         <div className="container col-md-6 loginForm">
-            <form onSubmit={handleSubmit(this.handleLogin)}>
+            <Form onSubmit={handleSubmit(this.handleLogin)}>
               <div className="container">
                 <Field
                   label = "Email"
@@ -78,8 +79,8 @@ class LoginPage extends Component {
                   onChange = {this.onChangePassword}
                 />
               </div>
-                <button type="submit" className="btn btn-primary">Login</button>
-            </form>
+                <Button type="submit">Login</Button>
+            </Form>
         </div>
         <div class="col-md-3"></div>
       </div>
